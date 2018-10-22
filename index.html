@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>Serial Plotter 3D</title>
+		</head>
+		<body>
+			<!--<h1>Hello World!</h1>
+
+			We are using node <script>document.write(process.versions.node)</script>,
+			Chrome <script>document.write(process.versions.chrome)</script>,
+			and Electron <script>document.write(process.versions.electron)</script> -->
+			<div class="toolbar">
+			</div>
+
+			<div class="plot">
+			</div>
+		</body>
+		<script>
+			var createScatter = require('gl-scatter3d');
+			var bunny = require('bunny');
+			var createScene = require('gl-plot3d');
+
+			var scene = createScene();
+
+			var scatter = createScatter({
+				gl: 			scene.gl,
+				position: 		bunny.positions,
+				size: 			10,
+				glyph: 			'.',
+				orthographic: 	true,
+				lineColor: 		[0,0,0],
+				color: 			[1,1,0],
+				lineWidth:  	1,
+				projectOpacity: 0.3 
+			})
+
+			scene.add(scatter)
+		</script>
+	</html>
